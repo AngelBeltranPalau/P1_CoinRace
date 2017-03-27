@@ -11,7 +11,7 @@ public:
 	int x, y, puntos;
 	bool gameESC;
 	
-	void mover(int x, int y, Input::Key tecla/*, Map A, CoinManager Z*/);
+	void mover(int &x, int &y, int &puntos, Input::Key tecla);
 		
 	Player(Map &a, CoinManager &b);
 	~Player();

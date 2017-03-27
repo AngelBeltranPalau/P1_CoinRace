@@ -27,7 +27,7 @@ void Map::matriz(int numFilas, int numColumnas, char **map)
 	}
 
 	//Función para cambiar el contenido de las celdas
-	void cambiarContenido(int x, int y, char casilla)
+	void cambiarContenido(int &x, int &y, char casilla)
 	{
 		map[x][y] = casilla;
 	}

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "CoinManager.h"
 #include "Map.h"
+#include <ctime>
 
 int minMonedas, maxMonedas;
 int numMonedas;
@@ -24,9 +25,10 @@ void CoinManager::eliminarMoneda(int x, int y) {
 	if (mimapa.map[x][y] == '$') {
 		mimapa.map[x][y] = '.';
 		numMonedas--;
-		if (numMonedas == 0) {
+		
+		/*if (numMonedas == 0) {
 			rellenarMapa();
-		}
+		}*/
 	}
 }
 
