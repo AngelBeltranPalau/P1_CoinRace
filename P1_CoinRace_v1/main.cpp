@@ -2,7 +2,6 @@
 #include "CoinManager.h"
 #include "Input.h"
 #include "Map.h"
-#include "Matrix.h"
 #include "Player.h"
 
 void main() {
@@ -16,11 +15,12 @@ void main() {
 	//Instanciar el Mapa
 	Map map(dif);
 	
-	//Instanciar el Player
-	Player jugador;
 	
 	//Instanciar el CoinManager
 	CoinManager monedas(map);
+
+	//Instanciar el Player
+	Player jugador(map, monedas);
 
 	//Se declara una variable que determina el máximo de monedas que el jugador debe conseguir para finalizar el juego
 	int minAux = 30 * static_cast <int> (dif);
@@ -29,15 +29,19 @@ void main() {
 
 	//Variable que recoge la tecla pusada
 	Input::Key tecla;
-
+	map.printMap();
+	std::cout << std::endl << std::endl << "Tu puntuación es de: " << jugador.puntos;
 	//GameLoop
 	while (jugador.puntos < maxMonedas || jugador.gameESC == false) {
 		tecla = Input::getKey();
 		if (tecla != Input::Key::NONE) {
-			jugador.mover(jugador.x, jugador.y, tecla, map, monedas);
+			system("cls");
+			jugador.mover(jugador.x, jugador.y, tecla);
+			map.printMap();
+			std::cout << std::endl << std::endl << "Tu puntuación es de: " << jugador.puntos << std::endl;
 		}
-		map.printMap();
-		std::cout << std::endl << std::endl << "Tu puntuación es de: " << jugador.puntos;
+		
+
 	}
 
 }

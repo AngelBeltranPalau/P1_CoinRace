@@ -1,20 +1,18 @@
 #pragma once
 #include "Map.h"
 #include "Input.h"
-
-class CoinManager;
+#include "CoinManager.h"
 class Player
 {
 public:
+	CoinManager &micoinmanager;
+	Map &mimapa;
+
 	int x, y, puntos;
 	bool gameESC;
 	
-	void mover(int x, int y, Input::Key tecla, Map A, CoinManager Z);
+	void mover(int x, int y, Input::Key tecla/*, Map A, CoinManager Z*/);
 		
-	Player();
+	Player(Map &a, CoinManager &b);
 	~Player();
-
-
 };
-
-

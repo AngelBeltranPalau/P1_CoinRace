@@ -5,33 +5,33 @@
 int minMonedas, maxMonedas;
 int numMonedas;
 
-void CoinManager::rellenarMapa(Map A) {
+void CoinManager::rellenarMapa() {
 	int i = 0;
 	numMonedas = rand() % (maxMonedas - minMonedas) + minMonedas;
 	while (i < numMonedas) {
-		int x = rand() % A.Filas;
-		int y = rand() % A.Columnas;
+		int x = rand() % mimapa.Filas;
+		int y = rand() % mimapa.Columnas;
 
-		if (A.map[x][y] == '.') {
-			A.map[x][y] = '$';
+		if (mimapa.map[x][y] == '.') {
+			mimapa.map[x][y] = '$';
 			i++;
 		}
 	}
 
 }
 
-void CoinManager::eliminarMoneda(Map A, int x, int y) {
-	if (A.map[x][y] == '$') {
-		A.map[x][y] = '.';
+void CoinManager::eliminarMoneda(int x, int y) {
+	if (mimapa.map[x][y] == '$') {
+		mimapa.map[x][y] = '.';
 		numMonedas--;
 		if (numMonedas == 0) {
-			rellenarMapa(A);
+			rellenarMapa();
 		}
 	}
 }
 
 
-CoinManager::CoinManager(Map A)
+CoinManager::CoinManager(Map &A): mimapa(A)
 {
 	minMonedas = A.Filas * A.Columnas * 0.03;
 	maxMonedas = A.Filas * A.Columnas * 0.13;
