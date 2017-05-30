@@ -44,5 +44,8 @@ void Map::matriz(int numFilas, int numColumnas, char **map)
 
 	Map::~Map()
 	{
+		for (int i = 0; i < Filas; i++) {
+			delete[]map[i];
+		}
 		delete[]map;
 	}

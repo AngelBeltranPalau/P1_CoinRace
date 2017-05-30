@@ -14,6 +14,8 @@ void main() {
 	int aux = 4;
 	dificultad dif;
 
+	int HORA, MINUTO, SEGUNDO, ML = 0;
+
 	while (aux != 1 && aux != 2 && aux != 3) {
 		std::cout << "Introduce la dificultad:";
 		std::cin >> aux;
@@ -43,7 +45,15 @@ void main() {
 	map.printMap();
 	std::cout << std::endl << std::endl << "Tu puntuacion es de: " << jugador.puntos << std::endl << "Tienes que llegar a :" << maxMonedas;
 	//GameLoop
-	while (jugador.puntos < maxMonedas || jugador.gameESC == false) {
+
+
+	std::clock_t start;
+	double duration;
+
+	start = std::clock();
+
+
+	while (jugador.puntos < maxMonedas && jugador.gameESC == false) {
 		tecla = Input::getKey();
 		if (tecla != Input::Key::NONE) {
 			system("cls");
@@ -55,8 +65,25 @@ void main() {
 			}
 		std::cout << std::endl << std::endl << "Tu puntuacion es de: " << jugador.puntos << std::endl << "Tienes que llegar a :" << maxMonedas;
 		}
-		
-
 	}
 
+	system("cls");
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+     
+
+	std::cout << "Enhorabuena, has conseguido los " << maxMonedas << " puntos!" << std::endl;
+	std::cout << "Tu tiempo ha sido de " << duration << " segundos!" << std::endl << std::endl;
+
+	std::cout << "Pulsa ENTER para salir";
+
+	while(tecla != Input::Key::ENTER)
+	{ 
+		tecla = Input::getKey();
+		continue;
+	}
+	
+	system("break");
+
 }
+
+					
